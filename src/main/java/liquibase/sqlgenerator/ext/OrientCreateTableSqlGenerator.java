@@ -69,7 +69,7 @@ public class OrientCreateTableSqlGenerator extends AbstractSqlGenerator<CreateTa
                     .setType(columnType.toOrientPropertyType());
             sqlList.add(new CreatePropertySql(property));
 
-            if (statement.getNotNullColumns().contains(columnName)) {
+            if (statement.getNotNullColumns().containsKey(columnName)) {
                 sqlList.add(new AlterPropertySql(orientClass.getName(), columnName,
                         OrientPropertyAttribute.NOTNULL.toString(), "true"));
             }

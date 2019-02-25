@@ -27,7 +27,7 @@ ext {
 
 
 dependencies {
-    api 'org.liquibase:liquibase-core:3.5.3'
+    api 'org.liquibase:liquibase-core:3.6.3'
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
 
     implementation 'org.apache.commons:commons-lang3:3.6'

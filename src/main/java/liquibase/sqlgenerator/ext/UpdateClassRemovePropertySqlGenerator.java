@@ -5,30 +5,30 @@ import liquibase.exception.ValidationErrors;
 import liquibase.sql.Sql;
 import liquibase.sqlgenerator.SqlGeneratorChain;
 import liquibase.sqlgenerator.core.AbstractSqlGenerator;
-import org.unbrokendome.liquibase.orientdb.sql.ChangePropertyTypeDateToDatetimeSql;
-import org.unbrokendome.liquibase.orientdb.statement.ChangePropertyTypeDateToDatetimeStatement;
+import org.unbrokendome.liquibase.orientdb.sql.UpdateClassRemovePropertySql;
+import org.unbrokendome.liquibase.orientdb.statement.UpdateClassRemovePropertyStatement;
 import org.unbrokendome.liquibase.orientdb.structure.OrientClass;
 import org.unbrokendome.liquibase.orientdb.structure.OrientProperty;
 
-public class ChangePropertyTypeDateToDatetimeSqlGenerator extends AbstractSqlGenerator<ChangePropertyTypeDateToDatetimeStatement> {
+public class UpdateClassRemovePropertySqlGenerator extends AbstractSqlGenerator<UpdateClassRemovePropertyStatement> {
 
     @Override
-    public ValidationErrors validate(ChangePropertyTypeDateToDatetimeStatement statement, Database database, SqlGeneratorChain sqlGeneratorChain) {
-        ValidationErrors validationErrors = new ValidationErrors();
+    public ValidationErrors validate(UpdateClassRemovePropertyStatement statement, Database database,
+                                     SqlGeneratorChain sqlGeneratorChain) {
 
+        ValidationErrors validationErrors = new ValidationErrors();
         validationErrors.checkRequiredField("className", statement.getClassName());
         validationErrors.checkRequiredField("propertyName", statement.getPropertyName());
 
         return validationErrors;
     }
 
-
     @Override
-    public Sql[] generateSql(ChangePropertyTypeDateToDatetimeStatement statement, Database database, SqlGeneratorChain sqlGeneratorChain) {
+    public Sql[] generateSql(UpdateClassRemovePropertyStatement statement, Database database, SqlGeneratorChain sqlGeneratorChain) {
 
         OrientClass orientClass = new OrientClass(statement.getClassName());
         OrientProperty property = new OrientProperty(orientClass, statement.getPropertyName());
 
-        return new Sql[] { new ChangePropertyTypeDateToDatetimeSql(property) };
+        return new Sql[] { new UpdateClassRemovePropertySql(property) };
     }
 }

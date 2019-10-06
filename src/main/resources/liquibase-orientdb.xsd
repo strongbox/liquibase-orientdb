@@ -235,7 +235,15 @@
     		</xsd:extension>
     	</xsd:complexContent>
     </xsd:complexType>
-    
+
+	<xsd:complexType name="ChangePropertyTypeDateToDatetimeType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:PropertyConfigType">
+				<xsd:attribute name="className" type="tns:Identifier" use="required" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
     <xsd:complexType name="DropClassType">
     	<xsd:attribute name="name" type="tns:Identifier" use="required" />
 		<xsd:attribute name="unsafe" type="xsd:boolean" default="false" />
@@ -307,6 +315,7 @@
     <xsd:element name="createCluster" type="tns:CreateClusterType" />
     <xsd:element name="createEdgeClass" type="tns:CreateEdgeClassType" />
     <xsd:element name="createProperty" type="tns:CreatePropertyType" />
+	<xsd:element name="changePropertyTypeDateToDatetime" type="tns:ChangePropertyTypeDateToDatetimeType" />
     <xsd:element name="createIndex" type="tns:CreateIndexType" />
     <xsd:element name="dropClass" type="tns:DropClassType" />
     <xsd:element name="dropCluster" type="tns:DropClusterType" />
